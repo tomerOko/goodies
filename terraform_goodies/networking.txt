@@ -1,0 +1,9 @@
+vcp = virtual private cloud
+
+
+subnet? (חלק מהרשת?)
+
+
+בגדול לכל קלאסטר יש שתי תתי רשתות, אחת שמנוהלת על ידי המשתמש, ושם רצים node pool, nodes
+והשניה שמנוהלת על ידי גוגל ושם נמצא הcontrol plane
+
