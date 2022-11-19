@@ -1,0 +1,23 @@
+apiVersion:  v1 # not like, let say, mongoDB that have 1 daemon. see k8s as a group of many daemons that can comunicate 
+# (daemon = the 'logic software' part of every software, not the 'human interface' part / the 'part u can see')
+# now see the yaml file as the UI (user interface). so.. in that example the 'apiVersion' the the specific daemon u need for the k8s object u want
+# there are 3 apiVersion stabiliti category. stable: v<some number>. beta: v<some number>beta<some number>. and alfa: v<some number>alfa<some number> 
+# alfa means 'dont trust me i can complitly cange tommoro'. stable means 'no changes + backwords comptabiliry for that feature in the future'. beta: somthing in between
+# and 2 api forms: regular: such as seen in the line above. sub gruops (to allow extensability): apps/v1 or apis/v2beta15
+kind: Pod # what object we wont
+metadata: # like flags. id dosent effect functionalith of that object. but let us as humans or
+# other objects to recognize this object
+  name: myapp # the name of the pod. as will be seen in 'kubectl תראה פודים' ???
+  labels: #??????
+    name: myapp # ?????
+spec:
+  containers: # an array of containers to run in this pod. supposed to always be one container per pod, exept of edje cases.
+  # by the way this is an example for YAML array (the array name is 'containers' and it have a one item)
+    - name: myapp # the name of the container as will be shown in 'doker ps'
+      image: microservice_template_dev_k8s.image # from what image do we want to build our container. keep in mind that if u mentioned a version while building the image
+      # resources: #?????
+      #   limits:  #?????
+      #     memory: "128Mi".  #?????
+      #     cpu: "500m".  #?????
+      # ports:   #?????
+      #   - containerPort: <Port>.  #?????

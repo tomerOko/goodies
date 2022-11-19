@@ -1,0 +1,35 @@
+# DEPLOYMENTS #
+# a deployment is an abstruction level above pod, it is a k8s object,
+# and it used to *manage a repilca set of a pod*
+# some of the main deployment responsabilities are:
+# * restart a replica in case of failure
+# * manage updates, lets say there 3 replicas, while updating the deployment
+#   will shut down one replica and start an updated one, than again, and agin. and the we got 3 updated replicas
+
+apiVersion: apps/v1 # please see comment in 'service_as_single_pod.yaml'
+kind: Deployment # please see comment in 'service_as_single_pod.yaml'
+metadata: # please see comment in 'service_as_single_pod.yaml'
+  name: myapp # the deployment's name ?with what command we listing deployments
+spec: 
+  replicas: 1 # how many replicas of the container
+  selector: # by what 'identifying mark' of 'labels' the deployment 
+#             should select what pods it shuold manage. u probably thinking
+#             'well it should probably just manage the containers it created'
+#             and u are right, i dont know why it inst working that way and
+#             why we need to specify a 'selection rules' instead
+    matchLabels: # a lables to sel
+      aLableName: aLableValue
+  template:
+    metadata:
+      labels:
+        aLableName: aLableName
+    spec:
+      containers:
+      - name: myapp
+        image: <Image>
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: <Port>
