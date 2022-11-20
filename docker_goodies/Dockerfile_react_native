@@ -1,11 +1,8 @@
 #a basic image to start from
-FROM node:17-alpine3.14
-
-# install bash
-RUN apk add --no-cache --upgrade bash
+FROM node:16
 
 # needed global packages for the project
-RUN npm i -g typescript nodemon ts-node
+RUN npm i -g typescript nodemon ts-node expo-cli @expo/ngrok@^4.1.0
 
 # make the binaries of the globaly installed packages avilable in the cli
 ENV PATH=/usr/local/bin:/app/node_modules/.bin:$PATH
